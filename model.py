@@ -89,9 +89,9 @@ class OctNet(nn.Module):
         super(OctNet, self).__init__()
 
 
-class DRA(nn.Module):
+class ResResNet(nn.Module):
     def __init__(self):
-        super(DRA, self).__init__()
+        super(ResResNet, self).__init__()
         self.cbcrnet = CbCrNet()
 
 

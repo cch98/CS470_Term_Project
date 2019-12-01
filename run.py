@@ -23,7 +23,7 @@ from dataloader import NFNDataset
 
 from RAdam.radam import RAdam
 
-from model import Pix2Pix, DRA
+from model import Pix2Pix, ResResNet
 
 
 from tensorboardX import SummaryWriter
@@ -65,7 +65,7 @@ def train(gt_path, noisy_path,landmark_path, gpu, tb_dir, checkpoint_dir, loss_t
 
     # region NETWORK
 
-    NFNet = DRA()
+    NFNet = ResResNet()
     # NFNet = Pix2Pix()
     NFNet.to(gpu)
 
@@ -227,7 +227,7 @@ def eval(input_path, output_path, checkpoint_path, model, gpu):
     if model == "Pix2Pix":
         NFNet = Pix2Pix()
     else:
-        NFNet = DRA()
+        NFNet = ResResNet()
 
     checkpoint = torch.load(checkpoint_path)
     NFNet.load_state_dict(checkpoint['my_classifier'])
