@@ -11,6 +11,21 @@ import logging
 import random
 from face_alignment import FaceAlignment, LandmarksType
 
+def get_mean_std(folder_path):
+    filelist = [
+        os.path.join(path, filename)
+        for path, dirs, files in os.walk(folder_path)
+        for filename in files
+        if filename.endswith(".png")
+    ]
+
+
+    a = np.random.rand(128, 32, 32, 3)
+    for i in range(3):
+        means = [m for m in np.mean(a, axis=(3, i))]
+    for i in range(3):
+        stds = [s for s in np.std(a, axis=(3, i))]
+
 
 def file_list(folder_path, endwith):
     filelist = [
