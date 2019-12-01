@@ -81,8 +81,8 @@ class Pix2Pix(nn.Module):
         d8 = self.deconv8(F.relu(d7))
         o = F.tanh(d8)
 
-        return input[:, :3]+o
-
+        # return input[:, :3]+o
+        return o
 
 class OctNet(nn.Module):
     def __init__(self):
